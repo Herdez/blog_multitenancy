@@ -7,10 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<% flash.each do |k,v| %>
+  <% flash.each do |k,v| %>
 	<div class='flash <%= k %>'><%= v %></div>
 	<% end %>
-    <%= yield %>
-
+  <% if user_signed_in? %>
+	Signed in as <%= current_user.email %>
+  <% end %>
+  <%= yield %>
 </body>
 </html>
